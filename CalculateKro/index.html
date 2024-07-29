@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form {
+            display: inline-block;
+            width: 30%;
+            vertical-align: top;
+        }
+
+        .form input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        .graph {
+            display: inline-block;
+            width: 10px;
+            margin-left: 50px;
+            height: 400px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border: 1px solid gray;
+            position: relative;
+
+
+        }
+
+        .graph>.bar {
+            width: 10px;
+            border-radius: 30px;
+            background-color: red;
+            height: 5px;
+            position: absolute;
+            bottom: 0;
+            transition: all 0.5s ease-in;
+        }
+
+        /* .bar:hover {
+            height: 200px;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <p><input type="text" name="" id="principle"></p>
+        <p><input type="text" name="" id="percentage"></p>
+        <p><input type="text" name="" id="total"></p>
+        <p><input type="text" name="" id="cal" value="Calculate Kro"></p>
+    </div>
+    <div class="graph">
+        <div class="bar">
+
+        </div>
+    </div>
+
+    <script>
+        let inputprinciple = document.querySelector("#principle")
+        let inputpercentage = document.querySelector("#percentage")
+        let inputtotal = document.querySelector("#total")
+        let calc = document.querySelector("#cal")
+        calc.addEventListener("click", (e) => {
+            let principle = parseFloat(inputprinciple.value)
+            let percentage = parseFloat(inputpercentage.value)
+            // let total = parseFloat(inputtotal.value)
+            let interest = (principle * percentage) / 100
+            let totalpx = 400 / 100 * percentage
+            if (totalpx > 400) {
+                totalpx = 400
+            }
+            inputtotal.value = interest
+            document.querySelector(".bar").style.height = `${totalpx}px`
+            // document.querySelector(".bar").style.height = `${percentage}%`
+            // document.querySelector(".bar").style.height = interest + "px"
+
+        })
+
+    </script>
+</body>
+
+</html>

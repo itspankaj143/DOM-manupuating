@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .taking {
+            width: 20%;
+            padding: 12px 20px;
+            border-radius: 10px;
+        }
+
+        input[placeholder] {
+            font-size: 20px;
+            color: red;
+        }
+
+        .l {
+            padding: 5px;
+            margin: 10px;
+            background-color: lightgrey;
+            border-radius: 10px;
+            width: 20%;
+        }
+
+        .closekro {
+            color: red;
+            margin-left: 100px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- and separate by , -->
+    <input type="text" name="" class="taking" id="" placeholder="Enter Your Skills...">
+
+    <ul id="skills">
+        <!-- <li class="l">C++</li> -->
+
+    </ul>
+
+    <script>
+        let inputele = document.querySelector(".taking")
+        let ul = document.querySelector("#skills")
+        inputele.addEventListener("keyup", function (e) {
+            let inputdata = this.value
+            console.log(inputdata)
+            let dataArr = inputdata.split(',')
+            console.log(dataArr)
+            let strele = dataArr.map((value) => {
+                return `<li class="l">${value} <span class="closekro">X</span></li>`
+            })
+            ul.innerHTML = strele.join('')
+            deleteKaro(dataArr)
+        })
+        function deleteKaro(dataArr) {
+            let deleteKaro = document.querySelectorAll(".closekro")
+            let al = document.querySelectorAll(".l")
+            deleteKaro.forEach((ele, index) => {
+                ele.addEventListener("click", function () {
+                    // ul.removeChild(ele.parentElement)
+                    // ul.children[index].remove()
+                    al[index].remove()
+                    dataArr.splice(index, 1)
+                    // console.log(dataArr)
+                    inputele.value = dataArr.join(',')
+                })
+            })
+        }
+    </script>
+</body>
+
+</html>

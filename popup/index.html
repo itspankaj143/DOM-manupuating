@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .popup {
+            width: 400px;
+            height: 400px;
+            background-color: rgba(0, 0, 0, 0.8);
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            color: white;
+
+
+
+        }
+
+        .show {
+            display: block;
+        }
+
+        #open {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: antiquewhite;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+
+        }
+
+        #close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            background-color: antiquewhite;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+
+
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* border: 1px solid red; */
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="open">open pop up</button>
+    <div class="popup ">
+        <div class="content">
+            <h1>Hello World!</h1>
+            <p>This is a simple popup.</p>
+        </div>
+        <button id="close">close</button>
+
+    </div>
+
+    <script>
+        const openBtn = document.getElementById('open');
+        const popup = document.querySelector('.popup');
+        const closeBtn = document.getElementById('close');
+
+        openBtn.addEventListener('click', function () {
+            popup.classList.add('show');
+
+
+        });
+        closeBtn.addEventListener('click', function () {
+            popup.classList.remove('show');
+        })
+    </script>
+
+</body>
+
+</html>
